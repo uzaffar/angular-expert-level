@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-11" *ngIf="(teams$ | async) as allTeamsBE">
+    <select #conferencSelect (change)="selectConference(conferencSelect.value)">
+      <option [value]="conference" *ngFor="let conference of conferences">
+        {{conference}}
+      </option>
+    </select>
+    <select #divisionSelect (change)="selectDivision(divisionSelect.value)">
+      <option [value]="divison" *ngFor="let divison of divisions">
+        {{divison}}
+      </option>
+    </select>
+    <select #teamSelect>
+      <option [value]="team.id" *ngFor="let team of getTeams(allTeamsBE, conferencSelect.value, divisionSelect.value)">
+        {{team.full_name}}
+      </option>
+    </select>
+    <button class="primary" (click)="trackTeam(teamSelect.value)">Track team</button>
+  </div>
+
+</div>
+<div class="row">
+  <app-team-stats class="col-sm-4" *ngFor="let team of nbaService.getTrackedTeams()" [team]="team">
+
+  </app-team-stats>
+</div>

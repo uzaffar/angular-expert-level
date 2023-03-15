@@ -1,0 +1,12 @@
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>{{content}}</p>
+    <ng-container *ngFor="let button of buttons">
+      <button type="button" (click)="action(button)">{{button}}</button>
+    </ng-container>
+  </div>
+
+</div>
