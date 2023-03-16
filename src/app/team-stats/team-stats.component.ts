@@ -1,5 +1,5 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {BehaviorSubject, Observable, of, Subject, Subscription, tap} from 'rxjs';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {BehaviorSubject, Observable, Subscription, tap} from 'rxjs';
 import {NbaService} from '../nba.service';
 import {Game, Stats, Team} from '../data.models';
 
@@ -19,6 +19,22 @@ export class TeamStatsComponent implements OnInit, OnDestroy {
   numberOfDays = new BehaviorSubject<number>(6);
   subs: Subscription | undefined;
   showResults = [6, 12, 20];
+  buttons = [
+    {
+      backgroundColorHex: '#b7b7b7',
+      textColorHex: '#000000',
+      icon: 'fa fa-trash',
+      prefixIcon: true,
+      name: 'No'
+    },
+    {
+      backgroundColorHex: '#410000',
+      textColorHex: '#ffffff',
+      icon: 'fa fa-home',
+      prefixIcon: true,
+      name: 'Yes'
+    },
+  ]
 
   constructor(protected nbaService: NbaService) {
   }

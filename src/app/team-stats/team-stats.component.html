@@ -30,5 +30,5 @@
   </div>
 
 </div>
-<app-confirm-modal *ngIf="showModal" content="Are you sure, you want to delete the team?" [buttons]="['Yes', 'No']"
-                   (buttonClicked)="dialogAction($event, team)"></app-confirm-modal>
+<app-confirm-modal *ngIf="showModal" content="Are you sure, you want to delete the team?" [buttons]="buttons"
+                   (buttonClicked)="dialogAction($event, team)" [htmlContent]="'<b>Custom HTML</b>'"></app-confirm-modal>

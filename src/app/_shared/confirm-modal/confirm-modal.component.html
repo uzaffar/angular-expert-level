@@ -2,11 +2,16 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
     <p>{{content}}</p>
+    <p [innerHTML]="htmlContent"></p>
+    <ng-content></ng-content>
     <ng-container *ngFor="let button of buttons">
-      <button type="button" (click)="action(button)">{{button}}</button>
+      <button type="button" [ngStyle]="{background: button.backgroundColorHex, color: button.textColorHex}" (click)="action(button.name)"><i
+        *ngIf="button.prefixIcon"
+        [ngClass]="{'mr-10': button.prefixIcon}"
+        class="{{button.icon}}"></i>{{button.name}}
+        <i [ngClass]="{'ml-10': button.prefixIcon}"
+           *ngIf="!button.prefixIcon" class="{{button.icon}}"></i></button>
     </ng-container>
   </div>
-
 </div>

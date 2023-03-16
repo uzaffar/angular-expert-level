@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ButtonActions} from "../models/button.actions";
 
 @Component({
   selector: 'app-confirm-modal',
@@ -7,9 +8,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ConfirmModalComponent {
   @Input() content: string = 'Provide your content';
+  @Input() htmlContent: string = '';
 
   //You could also create a much more complex interface and pass that into that array.
-  @Input() buttons: string[] = ['Cancel', 'Save'];
+  @Input() buttons: ButtonActions[] = [];
 
   @Output() buttonClicked = new EventEmitter<string>();
 
